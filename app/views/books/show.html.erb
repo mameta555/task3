@@ -1,2 +1,35 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1>User info</h1>
+  <%= image_tag 'no_image.jpg' %>
+  <table>
+    <tr>
+      <th>name</th>
+      <th>introduction</th>
+      <td>a</td>
+      <td>b</td>
+    </tr>
+  </table>
+<h1>New book</h1>
+
+<h1>Book detail</h1>
+<table>
+  <td>
+    <%= image_tag 'no_image.jpg' %><br>
+    <%= @book.user.name %>
+  </td>
+  <td>
+    <%= link_to book_path(@book.id) do %>
+      <%= @book.title %>
+    <% end %>
+  </td>
+  <td>
+    <%= @book.body %>
+  </td>
+  
+  <% if @book.user == current_user %>
+  <td>
+    <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
+  </td>
+  <% end %>
+</table>
+
+
