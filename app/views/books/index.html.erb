@@ -1,15 +1,13 @@
 <h1>User info</h1>
-<% if user_signed_in? %>
-  <%= image_tag current_user.get_profile_image(100, 100) %>
+  <%= image_tag @book.get_profile_image(100, 100) %>
 <table>
   <tr>
     <th>name</th>
-    <th><%= current_user.name %></th>
+    <th><%= @book.name %></th>
   </tr>
     <th>introduction</th>
-    <th><%= current_user.introduction %></th>
+    <th><%= @book.introduction %></th>
 </table>
-<% end %>
 <%= link_to "編集", edit_user_path(current_user.id) %>
 <h1>New book</h1>
 <%= form_with model: @booknew,url: '/books', method: :post do |f| %>
