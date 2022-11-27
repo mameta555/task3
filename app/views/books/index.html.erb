@@ -1,12 +1,21 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>User info</h1>
-  <%= image_tag @book.get_profile_image(100, 100) %>
+  <%= image_tag current_user.get_profile_image(100, 100) %>
 <table>
   <tr>
     <th>name</th>
-    <th><%= @book.name %></th>
+    <th><%= current_user.name %></th>
   </tr>
     <th>introduction</th>
-    <th><%= @book.introduction %></th>
+    <th><%= current_user.introduction %></th>
 </table>
 
 
