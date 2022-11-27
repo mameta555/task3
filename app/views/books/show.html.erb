@@ -9,7 +9,7 @@
     <th>introduction</th>
     <th><%= @book.user.introduction %></th>
     </table>
-  
+
 
 <%= render 'newbook', booknew: @booknew %>
 
@@ -32,10 +32,10 @@
 
   <% if @book.user == current_user %>
   <td>
-    <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
+    <%= link_to "Destroy", @book, method: :delete, "data-confirm" => "本当に消しますか?" %>
   </td>
   <td>
-    <%= link_to "Edit", edit_book_path(@book.id) %>
+    <%= link_to "Edit", edit_book_path(@book) %>
   </td>
   <% end %>
 </table>
