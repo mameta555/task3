@@ -1,47 +1,51 @@
-<h1>User info</h1>
+<div class="row">
+  <h1>User info</h1>
+  <div class="col col-lg-3"
+    <%= image_tag @user.get_profile_image(100,100) %>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th><%= @user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= @user.introduction %></th>
+      </tr>
+    </table>
 
-  <%= image_tag @user.get_profile_image(100,100) %>
-<table class="table">
-  <tr>
-    <th>name</th>
-    <th><%= @user.name %></th>
-  </tr>
-  <tr>
-    <th>introduction</th>
-    <th><%= @user.introduction %></th>
-  </tr>
-</table>
+    <%= render 'books/newbook', booknew: @booknew %>
+  </div>
 
+  <div class="col">
+  <!-- ユーザーの投稿一覧 -->
+  <table class="table">
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+    <% @books.each do |book| %>
+    <tr>
+      <td><%= image_tag @user.get_profile_image(80,80) %></td>
+      <td>
+        <%= link_to book_path(book.id) do %>
+          <%= book.title %>
+        <% end %>
+      </td>
+      <td><%= book.body %></td>
 
-<%= render 'books/newbook', booknew: @booknew %>
+    <% if @user == current_user %>
 
-<!-- ユーザーの投稿一覧 -->
-<table class="table">
-  <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Opinion</th>
-  </tr>
-  <% @books.each do |book| %>
-  <tr>
-    <td><%= image_tag @user.get_profile_image(80,80) %></td>
-    <td>
-      <%= link_to book_path(book.id) do %>
-        <%= book.title %>
-      <% end %>
-    </td>
-    <td><%= book.body %></td>
+      <td>
+        <%= link_to "Edit", edit_book_path(@user.id), class:'btn btn-success' %>
+      </td>
+      <td>
+        <%= link_to "Destroy", book_path(@user.id), method: :delete, "data-confirm" => "本当に消しますか?",class: 'btn btn-danger' %>
+      </td>
+    <% end %>
 
-  <% if @user == current_user %>
-    
-    <td>
-      <%= link_to "Edit", edit_book_path(@user.id), class:'btn btn-success' %>
-    </td>
-    <td>
-      <%= link_to "Destroy", book_path(@user.id), method: :delete, "data-confirm" => "本当に消しますか?",class: 'btn btn-danger' %>
-    </td>
-  <% end %>
-
-  </tr>
-  <% end %>
-</table>
+    </tr>
+    <% end %>
+  </table>
+  </div>
+</div>
