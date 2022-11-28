@@ -1,7 +1,7 @@
 <h1>User info</h1>
 
   <%= image_tag @user.get_profile_image(100,100) %>
-<table>
+<table class="table">
   <tr>
     <th>name</th>
     <th><%= @user.name %></th>
@@ -16,7 +16,7 @@
 <%= render 'books/newbook', booknew: @booknew %>
 
 <!-- ユーザーの投稿一覧 -->
-<table>
+<table class="table">
   <tr>
     <th></th>
     <th>Title</th>
@@ -28,19 +28,20 @@
     <td>
       <%= link_to book_path(book.id) do %>
         <%= book.title %>
-
       <% end %>
     </td>
     <td><%= book.body %></td>
-      <% if @user == current_user %>
-  <td>
-    <%= link_to "Destroy", book_path(@user.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
-  </td>
-  <td>
-    <%= link_to "Edit", edit_book_path(@user.id) %>
-  </td>
+
+  <% if @user == current_user %>
+    
+    <td>
+      <%= link_to "Edit", edit_book_path(@user.id), class:'btn btn-success' %>
+    </td>
+    <td>
+      <%= link_to "Destroy", book_path(@user.id), method: :delete, "data-confirm" => "本当に消しますか?",class: 'btn btn-danger' %>
+    </td>
   <% end %>
 
   </tr>
+  <% end %>
 </table>
-<% end %>

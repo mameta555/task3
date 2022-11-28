@@ -1,6 +1,11 @@
-<h1>Homes#top</h1>
-<p>in<span>Bookers,</span></p>
-<p>you can share and exchange your opinions , inpressions , and emotionsabout various books!</p>
+<div class="col col-10 mx-auto">
+  <h1>welcome to <span class="font-weight-bold"><i class="fas fa-book"></i>Bookers !!</span></h1>
+  <p>In <span class="font-weight-bold"><i class="fas fa-book"></i>Bookers,</span></p>
+  <p>you can share and exchange your opinions , inpressions , and emotionsabout<br>various books!</p>
+</div>
 
-<%= link_to "Log in", new_user_session_path %>
-<%= link_to "Sign up", new_user_registration_path %>
+<div class="col pb-2 d-grid gap-2 col-6 mx-auto">
+  <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-sm btn-block mb-3" %>
+
+  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-3" %>
+</div>
