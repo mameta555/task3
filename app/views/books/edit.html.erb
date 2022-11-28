@@ -1,13 +1,15 @@
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+
+ <% if @book.errors.any? %>
+    <%= @book.errors.count %>error
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
 <div class="col pb-2 d-grid gap-2 col-6 mx-auto">
-  <h1>Editing book</h1>
+  <h1>Editing Book</h1>
   <%= form_with model: @book, method: :patch do |f| %>
     <h4>Title</h4>
     <%= f.text_field :title %>

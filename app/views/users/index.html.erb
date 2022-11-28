@@ -2,7 +2,7 @@
   <%= flash[:success] %>
 </div>
 <div class="row">
-    <div class="col col-lg-3">
+    <div class="col col-md-3">
       <h1>User info</h1>
       <%= image_tag @user.get_profile_image(100,100) %>
       <table class="table">
@@ -16,11 +16,17 @@
         </tr>
       </table>
 
+      <div class="col pb-2 d-grid gap-2 col-6 mx-auto">
+        <%= link_to edit_user_path(current_user.id), class: 'btn btn-outline-secondary' do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
+
       <%= render 'books/newbook', booknew: @booknew %>
-      
+
     </div>
 
-    <div class="col col-lg-8">
+    <div class="col col-md-8 offset-md-1">
       <h1>Users</h1>
       <table class="table">
         <tr>
